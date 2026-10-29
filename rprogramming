@@ -1,0 +1,16 @@
+library(HSAUR)
+data()
+data("water", package = "HSAUR")
+plot(water$hardness, water$mortality,
+     main = "Hardness vs Mortality",
+     xlab = "Water Hardness",
+     ylab = "Mortality",
+     col = "blue",
+     pch = 19)
+model <- lm(mortality ~ hardness, data = water)
+abline(model, col = "red", lwd = 2)
+cor(water$mortality, water$hardness)
+print(model)
+summary(model)
+coef(model)
+predict(model, newdata = data.frame(hardness = 100))
